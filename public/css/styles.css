@@ -1,0 +1,150 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #393E46;
+    color: white;
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+header {
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer {
+    text-align: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.big-heading {
+    color: white;
+}
+
+.case-card {
+    margin: 5px auto;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #020812;
+}
+
+.card-text {
+    padding-top: 10px;
+    color: #020812;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.total-cases {
+    background-color: #c9cfff;
+    padding: 5%;
+}
+
+.total-deaths {
+    background-color: #bf2c2c;
+    padding: 5%;
+}
+
+.total-recovered {
+    background-color: #0bb026;
+    padding: 5%;
+}
+
+.total-active {
+    background-color: #00ADB5;
+    padding: 5%;
+}
+
+.country-data {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+
+/*-----------------------Table-------------------------*/
+.myTable {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/*--------------------------------------------------------*/
+.dataTables_wrapper .dataTables_length, select{
+    color: #fff;
+    margin-bottom: 0px;
+    
+}
+.dataTables_wrapper .dataTables_length select {
+    background-color:  rgb(52, 52, 54);
+    
+}
+.dataTables_wrapper .dataTables_filter, input{
+    color: #fff;
+    
+}
+.dataTables_wrapper .dataTables_filter input {
+    padding: 10px;
+    margin-left: 5px;
+    /* margin-right: 5px; */
+}
+#myTable_length{
+    margin-top: 10px;
+}
+
+input{
+    width: 18rem;
+    padding: 2px;
+    outline: none;
+    /* border: transparent; */
+}
+input:hover{
+    outline: none;
+    /* -webkit-box-shadow: 0 10px 6px -4px  rgb(20, 20, 20);
+     -moz-box-shadow: 0 10px 6px -4px rgb(20, 20, 20);
+          box-shadow: 0 10px 6px -4px rgb(20, 20, 20); */
+}
+input:focus{
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+    /* border: transparent; */
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color:  white !important;
+    /* border-radius: 5px;
+    border:transparent;
+    margin-right: 5px;
+    margin-left: 5px; */
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    /* border-radius: 5px; */
+    color: white
+    /* border:transparent;  */
+}
+.dataTables_wrapper .dataTables_info{
+    color: white
+}
+.dataTables_info{
+    margin-top: 10px;
+    color: white;
+}
+.dataTables_paginate{
+    margin-top: 10px;
+    color: white;
+}
+
+.ellipsis{
+    color: white;
+}

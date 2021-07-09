@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid Tracker</title>
+
+    <!--Bootstrap CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css"
+    />
+
+    <!--CSS-->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+       <header class="p-3 bg-dark text-white">
+      <div class="container">
+        <div
+          class="
+            d-flex
+            flex-wrap
+            align-items-center
+            justify-content-center justify-content-lg-start
+          "
+        >
+        <a href="/" class="nav-link px-2 h1 display-6 big-heading">
+            <img src="../images/coronavirus.png" alt="coronavirus image" height="50px" width="50px">
+            COVID-19
+        </a>
+      </div>
+    </header>
+
+    <% function thousands_separators(num){ %> 
+        <% var num_parts = num.toString().split("."); %> 
+        <% num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","); %> 
+        <% return num_parts.join("."); %> 
+      <% } %>
+
+    <div class="text-center py-3">
+        <img src="<%= country.countryInfo.flag %>" alt="country flag" height="40px" width="60px" class="flag rounded">
+        <span style="font-weight: 500; font-size: 2vw; padding-left: 20px; display:inline-block;vertical-align: middle;""><%=country.country.toUpperCase()%></span>
+    </div>
+    <section class="container-fluid">
+      <div class="row px-4">
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-cases">
+            <h5 class="card-title">Confirmed<br /></h5>
+            <img
+              src="../images/confirmed.png"
+              alt="covid 19 confirmed image"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.cases)%></p>
+          </div>
+        </div>
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-deaths">
+            <h5 class="card-title">Deaths<br /></h5>
+            <img
+              src="../images/death.png"
+              alt="covid 19 death img"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.deaths)%></p>
+          </div>
+        </div>
+
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-recovered">
+            <h5 class="card-title">Recovered<br /></h5>
+            <img
+              src="../images/recovered.png"
+              alt="covid 19 recovered image"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.recovered)%></p>
+          </div>
+        </div>
+<!------------------------------------------------------------------------------------------------------->
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-active">
+            <h5 class="card-title">Active<br /></h5>
+            <img
+              src="../images/active.png"
+              alt="covid 19 active image"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.active)%></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row px-4">
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-cases">
+            <h5 class="card-title">New Cases<br /></h5>
+            <img
+              src="../images/new-cases.png"
+              alt="covid 19 confirmed image"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.todayCases)%></p>
+          </div>
+        </div>
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-deaths">
+            <h5 class="card-title">Deaths Today<br /></h5>
+            <img
+              src="../images/death-today.png"
+              alt="covid 19 death img"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.todayDeaths)%></p>
+          </div>
+        </div>
+
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-recovered">
+            <h5 class="card-title">Recovered Today<br /></h5>
+            <img
+              src="../images/recovered-today.png"
+              alt="covid 19 recovered image"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.todayRecovered)%></p>
+          </div>
+        </div>
+
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-active">
+            <h5 class="card-title">Critical<br /></h5>
+            <img
+              src="../images/critical.png"
+              alt="covid 19 active image"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.critical)%></p>
+          </div>
+        </div>
+      </div>
+
+      <!------------------------------------------------------------------------------------------------------->
+
+      <div class="row px-4 country-data">
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-cases">
+            <h5 class="card-title">Tests<br /></h5>
+            <img
+              src="../images/flask.png"
+              alt="covid 19 confirmed image"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.tests)%></p>
+          </div>
+        </div>
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-deaths">
+            <h5 class="card-title">Deaths per Million<br /></h5>
+            <img
+              src="../images/corpse.png"
+              alt="covid 19 death img"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.deathsPerOneMillion)%></p>
+          </div>
+        </div>
+
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-recovered">
+            <h5 class="card-title">Cases per Million<br /></h5>
+            <img
+              src="../images/cases-per-million.png"
+              alt="covid 19 recovered image"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.casesPerOneMillion)%></p>
+          </div>
+        </div>
+
+        <div class="case-card shadow col-lg-3 col-md-6 text-center">
+          <div class="total-active">
+            <h5 class="card-title">Population<br /></h5>
+            <img
+              src="../images/population.png"
+              alt="covid 19 active image"
+              height="50px"
+              width="50px"
+            />
+            <p class="card-text"><%=thousands_separators(country.population)%></p>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <%- include('partials/footer'); -%>
+  </body>
+</html>

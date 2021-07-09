@@ -1,0 +1,106 @@
+<%- include('partials/header'); -%>
+<section class="container-fluid">
+  <div class="row px-4">
+    <div class="case-card shadow col-lg-3 col-md-6 text-center">
+      <div class="total-cases">
+        <h5 class="card-title">Confirmed<br /></h5>
+        <img
+          src="images/confirmed.png"
+          alt="covid 19 confirmed image"
+          height="50px"
+          width="50px"
+        />
+        <p class="card-text"><%=confirmedCases%></p>
+      </div>
+    </div>
+    <div class="case-card shadow col-lg-3 col-md-6 text-center">
+      <div class="total-deaths">
+        <h5 class="card-title">Deaths<br /></h5>
+        <img
+          src="images/death.png"
+          alt="covid 19 death img"
+          height="50px"
+          width="50px"
+        />
+        <p class="card-text"><%=deaths%></p>
+      </div>
+    </div>
+
+    <div class="case-card shadow col-lg-3 col-md-6 text-center">
+      <div class="total-recovered">
+        <h5 class="card-title">Recovered<br /></h5>
+        <img
+          src="images/recovered.png"
+          alt="covid 19 recovered image"
+          height="50px"
+          width="50px"
+        />
+        <p class="card-text"><%=recovered%></p>
+      </div>
+    </div>
+
+    <div class="case-card shadow col-lg-3 col-md-6 text-center">
+      <div class="total-active">
+        <h5 class="card-title">Active<br /></h5>
+        <img
+          src="images/active.png"
+          alt="covid 19 active image"
+          height="50px"
+          width="50px"
+        />
+        <p class="card-text"><%=active%></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container-fluid myTable px-5 text-white">
+  <table class="table hover myTable dt-responsive nowrap table-dark table-striped" id="myTable">
+    <thead>
+      <tr>
+        <th scope="col">Country</th>
+        <th scope="col">Total Cases</th>
+        <th scope="col">New Cases</th>
+        <th scope="col">Total Deaths</th>
+        <th scope="col">New Deaths</th>
+        <th scope="col">Recovered Cases</th>
+        <th scope="col">Active Cases</th>
+        <th scope="col">Critical Cases</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% function thousands_separators(num){ %> 
+            <% var num_parts = num.toString().split("."); %> 
+            <% num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","); %> 
+            <% return num_parts.join("."); %> 
+          <% } %>
+      <!-- Cycles through the countries and obtains the various datasets -->
+      <% countries.forEach(async function(country){ %>
+      <tr>
+        <td class="country" style="width: max-content">
+          <img
+            class="flag rounded"
+            src="<%= country.countryInfo.flag %>"
+            height="20px"
+            width="30px"
+          /><span style="padding-left: 10px;">
+            <a
+              href="/data/<%= country.country %>"
+              id="<%= country.country %>"
+            >
+            <%=country.country%></span
+          >
+        </td>
+        <td><%= thousands_separators(country.cases)%></td>
+        <td><%= thousands_separators(country.todayCases)  %></td>
+        <td class=""><%= thousands_separators(country.deaths) %></td>
+        <td class="death"><%= thousands_separators(country.todayDeaths) %></td>
+        <td class="recovered"><%= thousands_separators(country.recovered)  %></td>
+        <td class="actives"><%= thousands_separators(country.active) %></td>
+        <td class=""><%= thousands_separators(country.critical)  %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+<%- include('partials/footer'); -%>
